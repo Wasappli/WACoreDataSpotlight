@@ -42,6 +42,9 @@ Use Cocoapods, this is the easiest way to install the indexer
 
 ## Setup the indexer
 
+### Import
+`#import <WACoreDataSpotlight/WACoreDataSpotlight.h>`
+
 ### Allocate a new indexer
 
 For allocating the indexer, you need a valid `NSManagedObjectContext` you are using to create / fetch / etc you core data objects. 
@@ -85,7 +88,7 @@ Keywords can be hard values (`employee`) or dynamic (`{#firstName#}`).
 [self.mainIndexer registerMapping:employeeSearchMapping];
 ```
 
-### Use the indexed
+### Use the indexer
 
 ```objc
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
@@ -119,6 +122,11 @@ WACDSCustomMapping *companyMapping =
 [self.mainIndexer registerMapping:companyMapping];
 
 ```
+
+## Index existing objects
+
+You can index existing objects using `[self.indexer indexExistingObjects:existingObjects];`
+Please not that this is up to you to call this only one time in the app's life.
 
 # Do something with the activity and the object from the search
 When the user hits the search result, you grab the object using `[self.mainIndexer objectFromUserActivity:userActivity]`.
