@@ -83,7 +83,9 @@
 - (void)indexExistingObjects:(NSArray *)objects {
     WACDSClassAssertion(objects, NSArray);
     
-    [self indexExistingObjects:objects];
+    // Index or update is the same thing
+    [self indexNewObjects:objects];
+}
 }
 
 #pragma mark - Object retrieval 
