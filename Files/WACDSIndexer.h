@@ -66,6 +66,13 @@ typedef void (^WACDSIndexerBatchCompletionHandler)(NSError * _Nullable error);
 - (void)indexExistingObjects:(NSArray<NSManagedObject *> *_Nonnull)objects;
 
 /**
+ *  Update the index for an existing object. This might be useful for reindexing after an image download for example, which event might not appear on CoreData.
+ *
+ *  @param object the object you want to reindex
+ */
+- (void)updateIndexingForObject:(NSManagedObject *_Nonnull)object;
+
+/**
  *  Retrieve an NSManagedObject from an identifier you got on application:continueUserActivity:restorationHandler:
  *
  *  @param userActivity the user activity you got from App delegate

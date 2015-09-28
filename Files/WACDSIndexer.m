@@ -86,9 +86,16 @@
     // Index or update is the same thing
     [self indexNewObjects:objects];
 }
+
+- (void)updateIndexingForObject:(NSManagedObject *)object {
+    WACDSClassAssertion(object, NSManagedObject);
+    
+    if (object) {
+        [self indexNewObjects:@[object]];
+    }
 }
 
-#pragma mark - Object retrieval 
+#pragma mark - Object retrieval
 
 - (NSManagedObject *)objectFromUserActivity:(NSUserActivity *)userActivity {
     WACDSClassAssertion(userActivity, NSUserActivity);
