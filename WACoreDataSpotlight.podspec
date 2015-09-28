@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WACoreDataSpotlight"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Automatically index your CoreData objects to CoreSpotlight on iOS 9"
 
   s.description  = <<-DESC
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/ipodishima"
 
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/Wasappli/WACoreDataSpotlight.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/Wasappli/WACoreDataSpotlight.git", :tag => "0.0.2" }
   s.source_files  = "Files/*.{h,m}"
   s.frameworks = "CoreData", "CoreSpotlight"
 end
