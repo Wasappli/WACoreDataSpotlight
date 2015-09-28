@@ -55,7 +55,7 @@
     CSSearchableItem *searchableItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[self uniqueIdentifierForObject:object]
                                                                          domainIdentifier:[self domainIdentifierForObject:object]
                                                                              attributeSet:self.searchableItemAttributeSetBuilder(object)];
-    searchableItem.expirationDate = self.expirationDate;
+    searchableItem.expirationDate = self.expirationDateBuilder ? self.expirationDateBuilder(object) : nil;
     
     return searchableItem;
 }

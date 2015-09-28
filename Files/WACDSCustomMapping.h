@@ -10,6 +10,7 @@
 @import CoreSpotlight;
 
 typedef CSSearchableItemAttributeSet* _Nonnull (^WACDSSearchableItemAttributeSetBuilder)(id _Nonnull object);
+typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object);
 
 /**
  This class provides a way to map an NSManagedObject with CSSearchableItem through CSSearchableItemAttributeSet.
@@ -69,6 +70,10 @@ typedef CSSearchableItemAttributeSet* _Nonnull (^WACDSSearchableItemAttributeSet
 @property (nonatomic, strong, readonly, nonnull) Class objectClass;
 
 @property (nonatomic, strong, nullable) NSString *domainIdentifierPattern;
-@property (nonatomic, strong, nullable) NSDate   *expirationDate;
+
+/**
+ *  An optional expiration date builder for the objects you index.
+ */
+@property (nonatomic, copy, nullable) WACDSMappingExpirationDateBuilder expirationDateBuilder;
 
 @end
