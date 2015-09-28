@@ -52,6 +52,10 @@
 }
 
 - (CSSearchableItem *)searchableItemForObject:(id)object {
+    if (self.shouldIndexObjectBlock && self.shouldIndexObjectBlock(object) == NO) {
+        return nil;
+    }
+    
     CSSearchableItem *searchableItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[self uniqueIdentifierForObject:object]
                                                                          domainIdentifier:[self domainIdentifierForObject:object]
                                                                              attributeSet:self.searchableItemAttributeSetBuilder(object)];

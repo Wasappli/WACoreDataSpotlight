@@ -10,6 +10,7 @@
 @import CoreSpotlight;
 
 typedef CSSearchableItemAttributeSet* _Nonnull (^WACDSSearchableItemAttributeSetBuilder)(id _Nonnull object);
+typedef BOOL (^WACDSMappingShouldIndexObjectBlock)(id _Nonnull object);
 typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object);
 
 /**
@@ -56,7 +57,7 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
  *
  *  @return a spotlight searchable item ready to be added to the index
  */
-- (CSSearchableItem * _Nonnull)searchableItemForObject:(id _Nonnull)object;
+- (CSSearchableItem * _Nullable)searchableItemForObject:(id _Nonnull)object;
 
 /**
  *  Get the parameters from a unique identifier you got for example from application:continueUserActivity:restorationHandler:
@@ -67,13 +68,24 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
  */
 - (NSDictionary * _Nullable)parametersFromUniqueIdentifier:(NSString * _Nonnull)uniqueIdentifier;
 
+/**
+ *  The class object concerned for the mapping (value from initialization)
+ */
 @property (nonatomic, strong, readonly, nonnull) Class objectClass;
 
+/**
+ *  The optional domainIdentifierPattern for the mapping. @see domainIdentifier on CSSearchableItem
+ */
 @property (nonatomic, strong, nullable) NSString *domainIdentifierPattern;
 
 /**
  *  An optional expiration date builder for the objects you index.
  */
 @property (nonatomic, copy, nullable) WACDSMappingExpirationDateBuilder expirationDateBuilder;
+
+/**
+ *  An optional block if you wish not to index some objects because there are in a transient mode (like a booking in progress)
+ */
+@property (nonatomic, copy, nullable) WACDSMappingShouldIndexObjectBlock shouldIndexObjectBlock;
 
 @end

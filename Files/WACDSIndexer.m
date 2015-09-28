@@ -168,12 +168,19 @@
 }
 
 - (void)indexNewObjects:(NSArray *)objects {
-    NSMutableArray *searchItems = [NSMutableArray array];
+    NSMutableArray *searchItems                  = [NSMutableArray array];
+    NSMutableArray *objectsWithoutSearchableItem = [NSMutableArray array];
+    
     for (id object in objects) {
         WACDSCustomMapping *mapping = self.mappings[NSStringFromClass([object class])];
         if (mapping) {
             CSSearchableItem *item = [mapping searchableItemForObject:object];
-            [searchItems addObject:item];
+            if (item) {
+                [searchItems addObject:item];
+            }
+            else {
+                [objectsWithoutSearchableItem addObject:object];
+            }
         }
     }
     
@@ -185,6 +192,10 @@
                                      }
                                  }];
     }
+    
+    // We might have some objects not mapped for some reason
+    // These objects may have never been indexed. But if it was, be sure to remove them from the index as well
+    [self removeObjectsFromIndex:objectsWithoutSearchableItem];
 }
 
 - (void)removeObjectsFromIndex:(NSArray *)objects {
