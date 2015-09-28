@@ -3,7 +3,7 @@ PODS:
   - MagicalRecord (2.3.0)
   - UITableView+NSFetchedResultsController (1.0)
   - WAAppRouting (0.0.4)
-  - WACoreDataSpotlight (0.0.2)
+  - WACoreDataSpotlight (0.0.3)
 
 DEPENDENCIES:
   - FXForms
@@ -21,6 +21,6 @@ SPEC CHECKSUMS:
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   UITableView+NSFetchedResultsController: 4dbe639219ec2261da75e310508b98f9d2b250d3
   WAAppRouting: 64dde97adefda2e9293b5ab49e0568be5d76b53c
-  WACoreDataSpotlight: 3e259e6366bc635f73e56482fdbd7db25181dcc9
+  WACoreDataSpotlight: 349072ce48b5ce1397480f117db63ab92416778a
 
 COCOAPODS: 0.38.0
