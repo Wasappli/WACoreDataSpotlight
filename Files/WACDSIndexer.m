@@ -43,7 +43,7 @@
     
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextHasChanges:) name:NSManagedObjectContextObjectsDidChangeNotification object:managedObjectContext];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
         
         self->_managedObjectContext = managedObjectContext;
         
@@ -139,7 +139,7 @@
 
 #pragma mark - Notifications
 
-- (void)managedObjectContextHasChanges:(NSNotification *)notification {
+- (void)managedObjectContextDidSave:(NSNotification *)notification {
     NSArray* insertedObjects = [notification userInfo][NSInsertedObjectsKey];
     NSArray* deletedObjects  = [notification userInfo][NSDeletedObjectsKey];
     NSArray* updatedObjects  = [notification userInfo][NSUpdatedObjectsKey];
@@ -221,7 +221,7 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
 @end
