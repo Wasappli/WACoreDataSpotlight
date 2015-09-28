@@ -1,6 +1,8 @@
 [![Version](https://img.shields.io/cocoapods/v/WACoreDataSpotlight.svg?style=flat)](http://cocoapods.org/pods/WACoreDataSpotlight)
 [![License](https://img.shields.io/cocoapods/l/WACoreDataSpotlight.svg?style=flat)](http://cocoapods.org/pods/WACoreDataSpotlight)
 [![Platform](https://img.shields.io/cocoapods/p/WACoreDataSpotlight.svg?style=flat)](http://cocoapods.org/pods/WACoreDataSpotlight)
+![](https://img.shields.io/badge/Require-Xcode7-lightgrey.svg?style=flat-square)
+![](https://img.shields.io/badge/Supported-iOS7+-yellow.svg?style=flat-square)
 
 **Developed and Maintained by [Ipodishima](https://github.com/ipodishima) Founder & CTO at [Wasappli Inc](http://wasapp.li).** (If you need to develop an app, [get in touch](mailto:contact@wasapp.li) with our team!)
 
@@ -17,8 +19,7 @@ It will:
 - update the entry on the index,
 - delete the entry from the index.
 
-Automatically.
-
+Automatically (after a **save**)
 
 #Compatibility
 
@@ -127,6 +128,13 @@ WACDSCustomMapping *companyMapping =
 
 You can index existing objects using `[self.indexer indexExistingObjects:existingObjects];`
 Please not that this is up to you to call this only one time in the app's life.
+
+## Update the index
+Assuming you have an object to index which requires an image download from the URL. Indexing would give the order to download the image, but at the end you need to refresh the index to pass the image.
+
+```objc
+[self.mainIndexer updateIndexingForObject:company];
+```
 
 # Do something with the activity and the object from the search
 When the user hits the search result, you grab the object using `[self.mainIndexer objectFromUserActivity:userActivity]`.

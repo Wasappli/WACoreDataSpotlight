@@ -1,0 +1,6 @@
+## [V0.0.2](https://github.com/Wasappli/WACoreDataSpotlight/releases/tag/0.0.2)
+
+### Fixes
+- Fixed an infinited loop on `indexExistingObjects:`
+- Added a new method to refresh an object indexing (after an image download for example) (`updateIndexingForObject:`)
+- Update the index on `object context did save notification` instead of `objects did change`
