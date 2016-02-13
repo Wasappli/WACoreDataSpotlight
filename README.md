@@ -36,8 +36,8 @@ You can use
 Then, when the app is launched, go back to the springboard, search for `Marian Paul` for exemple, of for `employee`
 
 ## Installation
-### Cocoapods
-Use Cocoapods, this is the easiest way to install the indexer
+### CocoaPods
+Use CocoaPods, this is the easiest way to install the indexer
 
 `pod 'WACoreDataSpotlight'`
 
