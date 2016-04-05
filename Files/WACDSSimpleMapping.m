@@ -24,29 +24,29 @@
 
 @implementation WACDSSimpleMapping
 
-- (instancetype)initWithManagedObjectClass:(Class)objectClass
-                   uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern
-                              titlePattern:(NSString *)titlePattern
-                 contentDescriptionPattern:(NSString *)contentDescriptionPattern
-                          keywordsPatterns:(NSArray<NSString *> *)keywordsPatterns
-                      thumbnailDataBuilder:(WACDSSimpleMappingThumbnailDataBuilder)thumbnailDataBuilder {
+- (instancetype)initWithManagedObjectEntityName:(NSString *)objectEntityName
+                        uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern
+                                   titlePattern:(NSString *)titlePattern
+                      contentDescriptionPattern:(NSString *)contentDescriptionPattern
+                               keywordsPatterns:(NSArray<NSString *> *)keywordsPatterns
+                           thumbnailDataBuilder:(WACDSSimpleMappingThumbnailDataBuilder)thumbnailDataBuilder {
     
     WACDSClassAssertion(titlePattern, NSString);
     
     __weak typeof(self) weakSelf = self;
-    self = [super initWithManagedObjectClass:objectClass
-                     uniqueIdentifierPattern:uniqueIdentifierPattern
-           searchableItemAttributeSetBuilder:^CSSearchableItemAttributeSet *(id object) {
-               CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
-               attributeSet.title                         = [weakSelf.titleStringPattern stringWithValuesFromObject:object];
-               attributeSet.contentDescription            = [weakSelf.contentDescriptionStringPattern stringWithValuesFromObject:object];
-               attributeSet.keywords                      = [weakSelf keywordsForObject:object];
-               if (weakSelf.thumbnailDataBuilder) {
-                   attributeSet.thumbnailData = weakSelf.thumbnailDataBuilder(object);
-               }
-               
-               return attributeSet;
-           }];
+    self = [super initWithManagedObjectEntityName:objectEntityName
+                          uniqueIdentifierPattern:uniqueIdentifierPattern
+                searchableItemAttributeSetBuilder:^CSSearchableItemAttributeSet *(id object) {
+                    CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
+                    attributeSet.title                         = [weakSelf.titleStringPattern stringWithValuesFromObject:object];
+                    attributeSet.contentDescription            = [weakSelf.contentDescriptionStringPattern stringWithValuesFromObject:object];
+                    attributeSet.keywords                      = [weakSelf keywordsForObject:object];
+                    if (weakSelf.thumbnailDataBuilder) {
+                        attributeSet.thumbnailData = weakSelf.thumbnailDataBuilder(object);
+                    }
+                    
+                    return attributeSet;
+                }];
     
     if (self) {
         self->_titleStringPattern = [[WACDSStringPattern alloc] initWithPattern:titlePattern cleanValuesOnReplacement:YES];
@@ -74,6 +74,14 @@
         [resolvedArray addObject:[pattern stringWithValuesFromObject:object]];
     }
     return [resolvedArray copy];
+}
+
+@end
+
+@implementation WACDSSimpleMapping (Deprecated)
+
+- (instancetype)initWithManagedObjectClass:(Class)objectClass uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern titlePattern:(NSString *)titlePattern contentDescriptionPattern:(NSString *)contentDescriptionPattern keywordsPatterns:(NSArray<NSString *> *)keywordsPatterns thumbnailDataBuilder:(WACDSSimpleMappingThumbnailDataBuilder)thumbnailDataBuilder {
+    return [self initWithManagedObjectEntityName:NSStringFromClass(objectClass) uniqueIdentifierPattern:uniqueIdentifierPattern titlePattern:titlePattern contentDescriptionPattern:contentDescriptionPattern keywordsPatterns:keywordsPatterns thumbnailDataBuilder:thumbnailDataBuilder];
 }
 
 @end

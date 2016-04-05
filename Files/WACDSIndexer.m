@@ -73,9 +73,8 @@
 
 - (void)registerMapping:(WACDSCustomMapping *)mapping {
     WACDSClassAssertion(mapping, WACDSCustomMapping);
-    NSString *classAsString = NSStringFromClass(mapping.objectClass);
-    WACDSAssert(!self.mappings[classAsString], ([NSString stringWithFormat:@"You already have a mapping for '%@'", classAsString]));
-    self.mappings[classAsString] = mapping;
+    WACDSAssert(!self.mappings[mapping.objectEntityName], ([NSString stringWithFormat:@"You already have a mapping for '%@'", mapping.objectEntityName]));
+    self.mappings[mapping.objectEntityName] = mapping;
 }
 
 #pragma mark Indexing
@@ -112,7 +111,7 @@
                 if ([testIdentifier isEqualToString:uniqueIdentifier]) {
                     // We found the object, hurra. Let's fetch it
                     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-                    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(mapping.objectClass)
+                    NSEntityDescription *entity = [NSEntityDescription entityForName:mapping.objectEntityName
                                                               inManagedObjectContext:self.managedObjectContext];
                     [fetchRequest setEntity:entity];
                     

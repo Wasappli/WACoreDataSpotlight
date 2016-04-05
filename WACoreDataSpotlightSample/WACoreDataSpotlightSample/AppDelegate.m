@@ -41,26 +41,26 @@
     
     self.mainIndexer = [[WACDSIndexer alloc] initWithManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
     
-    WACDSSimpleMapping *employeeSearchMapping = [[WACDSSimpleMapping alloc] initWithManagedObjectClass:[Employee class]
-                                                                               uniqueIdentifierPattern:@"employee_{#firstName#}_{#lastName#}"
-                                                                                          titlePattern:@"{#firstName#} {#lastName#}"
-                                                                             contentDescriptionPattern:@"{#firstName#} {#lastName#} is working as {#jobTitle#} on {#company.name#}"
-                                                                                      keywordsPatterns:@[@"employee", @"{#firstName#}", @"{#lastName#}"]
-                                                                                  thumbnailDataBuilder:^NSData *(Employee *employee) {
-                                                                                      return UIImagePNGRepresentation([UIImage imageNamed:employee.avatarImageName]);
-                                                                                  }];
+    WACDSSimpleMapping *employeeSearchMapping = [[WACDSSimpleMapping alloc] initWithManagedObjectEntityName:@"Employee"
+                                                                                    uniqueIdentifierPattern:@"employee_{#firstName#}_{#lastName#}"
+                                                                                               titlePattern:@"{#firstName#} {#lastName#}"
+                                                                                  contentDescriptionPattern:@"{#firstName#} {#lastName#} is working as {#jobTitle#} on {#company.name#}"
+                                                                                           keywordsPatterns:@[@"employee", @"{#firstName#}", @"{#lastName#}"]
+                                                                                       thumbnailDataBuilder:^NSData *(Employee *employee) {
+                                                                                           return UIImagePNGRepresentation([UIImage imageNamed:employee.avatarImageName]);
+                                                                                       }];
     [self.mainIndexer registerMapping:employeeSearchMapping];
     
-    WACDSCustomMapping *companyMapping = [[WACDSCustomMapping alloc] initWithManagedObjectClass:[Company class]
+    WACDSCustomMapping *companyMapping = [[WACDSCustomMapping alloc] initWithManagedObjectEntityName:@"Company"
                                                                         uniqueIdentifierPattern:@"company_{#name#}"
-                                                              searchableItemAttributeSetBuilder:^CSSearchableItemAttributeSet *(Company *company) {
-                                                                  CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
-                                                                  attributeSet.title                         = company.name;
-                                                                  attributeSet.contentDescription            = [NSString stringWithFormat:@"The company has its offices in %@ and its primary activity is %@.\n%ld employees", company.address, company.activity, [company.employees count]];
-                                                                  attributeSet.keywords                      = @[@"company", company.name, company.activity];
-                                                                  
-                                                                  return attributeSet;
-                                                              }];
+                                                                   searchableItemAttributeSetBuilder:^CSSearchableItemAttributeSet *(Company *company) {
+                                                                       CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
+                                                                       attributeSet.title                         = company.name;
+                                                                       attributeSet.contentDescription            = [NSString stringWithFormat:@"The company has its offices in %@ and its primary activity is %@.\n%ld employees", company.address, company.activity, [company.employees count]];
+                                                                       attributeSet.keywords                      = @[@"company", company.name, company.activity];
+                                                                       
+                                                                       return attributeSet;
+                                                                   }];
     [self.mainIndexer registerMapping:companyMapping];
     
     Company *wasappli = [Company MR_findFirstByAttribute:@"name" withValue:@"Wasappli"];

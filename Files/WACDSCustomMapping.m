@@ -25,15 +25,15 @@
 
 @implementation WACDSCustomMapping
 
-- (instancetype)initWithManagedObjectClass:(Class)objectClass uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder)searchableItemAttributeSetBuilder {
+- (instancetype)initWithManagedObjectEntityName:(NSString *)objectEntityName uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder)searchableItemAttributeSetBuilder {
     
-    WACDSParameterAssert(class_isMetaClass(object_getClass(objectClass)) && [objectClass isSubclassOfClass:[NSObject class]]);
+    WACDSClassAssertion(objectEntityName, NSString);
     WACDSClassAssertion(uniqueIdentifierPattern, NSString);
     WACDSParameterAssert(searchableItemAttributeSetBuilder);
     
     self = [super init];
     if (self) {
-        self->_objectClass                       = objectClass;
+        self->_objectEntityName                  = objectEntityName;
         self->_searchableItemAttributeSetBuilder = searchableItemAttributeSetBuilder;
         
         // Create the pattern
@@ -77,6 +77,16 @@
     else {
         self.domainIdentifierStringPattern = nil;
     }
+}
+
+@end
+
+@implementation WACDSCustomMapping (Deprecated)
+
+- (instancetype)initWithManagedObjectClass:(Class)objectClass uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder)searchableItemAttributeSetBuilder {
+    return [self initWithManagedObjectEntityName:NSStringFromClass(objectClass)
+                         uniqueIdentifierPattern:uniqueIdentifierPattern
+               searchableItemAttributeSetBuilder:searchableItemAttributeSetBuilder];
 }
 
 @end

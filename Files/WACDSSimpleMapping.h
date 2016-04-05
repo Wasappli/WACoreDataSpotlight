@@ -18,6 +18,29 @@ typedef NSData* _Nullable (^WACDSSimpleMappingThumbnailDataBuilder)(id _Nonnull 
 /**
  *  Init with some patterns to use
  *
+ *  @param objectEntityName          The object entity name
+ *  @param uniqueIdentifierPattern   A pattern for unique identifier. Ex: booking_{#bookingID#}
+ *  @param titlePattern              A pattern for title. Ex: Booking in {#hotel.name#}
+ *  @param contentDescriptionPattern A pattern for Description. Ex: Located in {#address#} from {#checkin#} to {#checkout#}
+ *  @param keywordsPatterns          An array of keywords. Can be patterns or not. Ex: @[@"booking", @{#hotel.name#}]
+ *  @param thumbnailDataBuilder      A block to build the thumbnail. Should return an image as data
+ *
+ *  @return a fresh simple mapping all set for you
+ */
+- (instancetype _Nonnull)initWithManagedObjectEntityName:(NSString * _Nonnull)objectEntityName
+                                 uniqueIdentifierPattern:(NSString * _Nonnull)uniqueIdentifierPattern
+                                            titlePattern:(NSString * _Nonnull)titlePattern
+                               contentDescriptionPattern:(NSString * _Nullable)contentDescriptionPattern
+                                        keywordsPatterns:(NSArray<NSString*> * _Nullable)keywordsPatterns
+                                    thumbnailDataBuilder:(WACDSSimpleMappingThumbnailDataBuilder _Nullable)thumbnailDataBuilder;
+
+@end
+
+@interface WACDSSimpleMapping (Deprecated)
+
+/**
+ *  Init with some patterns to use
+ *
  *  @param objectClass               The object class
  *  @param uniqueIdentifierPattern   A pattern for unique identifier. Ex: booking_{#bookingID#}
  *  @param titlePattern              A pattern for title. Ex: Booking in {#hotel.name#}
@@ -32,6 +55,6 @@ typedef NSData* _Nullable (^WACDSSimpleMappingThumbnailDataBuilder)(id _Nonnull 
                                        titlePattern:(NSString * _Nonnull)titlePattern
                           contentDescriptionPattern:(NSString * _Nullable)contentDescriptionPattern
                                    keywordsPatterns:(NSArray<NSString*> * _Nullable)keywordsPatterns
-                               thumbnailDataBuilder:(WACDSSimpleMappingThumbnailDataBuilder _Nullable)thumbnailDataBuilder;
+                               thumbnailDataBuilder:(WACDSSimpleMappingThumbnailDataBuilder _Nullable)thumbnailDataBuilder __deprecated_msg("use init with managed object entity name instead");
 
 @end

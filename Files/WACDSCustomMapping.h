@@ -22,15 +22,15 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
 /**
  *  Init the mapping
  *
- *  @param objectClass                       The object class
+ *  @param objectEntityName                  The object entity name
  *  @param uniqueIdentifierPattern           A pattern for unique identifier. Ex: booking_{#bookingID#}
  *  @param searchableItemAttributeSetBuilder A block which will be called for each object to index. You need to return an attribute set
  *
  *  @return a fresh mapping
  */
-- (instancetype _Nonnull)initWithManagedObjectClass:(Class _Nonnull)objectClass
-                            uniqueIdentifierPattern:(NSString *_Nonnull)uniqueIdentifierPattern
-                  searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder;
+- (instancetype _Nonnull)initWithManagedObjectEntityName:(NSString *_Nonnull)objectEntityName
+                                 uniqueIdentifierPattern:(NSString *_Nonnull)uniqueIdentifierPattern
+                       searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder;
 
 /**
  *  Get the unique identifier from an object based on the pattern
@@ -69,9 +69,9 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
 - (NSDictionary * _Nullable)parametersFromUniqueIdentifier:(NSString * _Nonnull)uniqueIdentifier;
 
 /**
- *  The class object concerned for the mapping (value from initialization)
+ *  The object entity name concerned for the mapping (value from initialization)
  */
-@property (nonatomic, strong, readonly, nonnull) Class objectClass;
+@property (nonatomic, strong, readonly, nonnull) NSString *objectEntityName;
 
 /**
  *  The optional domainIdentifierPattern for the mapping. @see domainIdentifier on CSSearchableItem
@@ -87,5 +87,22 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
  *  An optional block if you wish not to index some objects because there are in a transient mode (like a booking in progress)
  */
 @property (nonatomic, copy, nullable) WACDSMappingShouldIndexObjectBlock shouldIndexObjectBlock;
+
+@end
+
+@interface WACDSCustomMapping (Deprecated)
+
+/**
+ *  Init the mapping
+ *
+ *  @param objectClass                       The object class
+ *  @param uniqueIdentifierPattern           A pattern for unique identifier. Ex: booking_{#bookingID#}
+ *  @param searchableItemAttributeSetBuilder A block which will be called for each object to index. You need to return an attribute set
+ *
+ *  @return a fresh mapping
+ */
+- (instancetype _Nonnull)initWithManagedObjectClass:(Class _Nonnull)objectClass
+                            uniqueIdentifierPattern:(NSString *_Nonnull)uniqueIdentifierPattern
+                  searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder __deprecated_msg("Use `initWithManagedObjectEntityName: uniqueIdentifierPattern: searchableItemAttributeSetBuilder:` instead");
 
 @end
