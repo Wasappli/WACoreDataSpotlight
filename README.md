@@ -62,14 +62,14 @@ Let's start with an easy one
 
 ```objc
 WACDSSimpleMapping *employeeSearchMapping =
-[[WACDSSimpleMapping alloc] initWithManagedObjectClass:[Employee class]
-                               uniqueIdentifierPattern:@"employee_{#firstName#}_{#lastName#}"
-                                          titlePattern:@"{#firstName#} {#lastName#}"
-                             contentDescriptionPattern:@"{#firstName#} {#lastName#} is working as {#jobTitle#} on {#company.name#}"
-                                      keywordsPatterns:@[@"employee", @"{#firstName#}", @"{#lastName#}"]
-                                  thumbnailDataBuilder:^NSData *(Employee *employee) {
-                                      return UIImagePNGRepresentation([UIImage imageNamed:employee.avatarImageName]);
-                                  }];
+[[WACDSSimpleMapping alloc] initWithManagedObjectEntityName:@"Employee"
+                                    uniqueIdentifierPattern:@"employee_{#firstName#}_{#lastName#}"
+                                               titlePattern:@"{#firstName#} {#lastName#}"
+                                  contentDescriptionPattern:@"{#firstName#} {#lastName#} is working as {#jobTitle#} on {#company.name#}"
+                                           keywordsPatterns:@[@"employee", @"{#firstName#}", @"{#lastName#}"]
+                                       thumbnailDataBuilder:^NSData *(Employee *employee) {
+                                            return UIImagePNGRepresentation([UIImage imageNamed:employee.avatarImageName]);
+                                       }];
 ```
 
 First, you pass `Employee` class which is a subclass of `NSManagedObject`.
@@ -110,16 +110,16 @@ You can use custom mapping to create your own attribute set. For example:
 
 ```objc
 WACDSCustomMapping *companyMapping =
-[[WACDSCustomMapping alloc] initWithManagedObjectClass:[Company class]
-                               uniqueIdentifierPattern:@"company_{#name#}"
-                     searchableItemAttributeSetBuilder:^CSSearchableItemAttributeSet *(Company *company) {
-                         CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
-                         attributeSet.title                         = company.name;
-                         attributeSet.contentDescription            = [NSString stringWithFormat:@"The company has its offices in %@ and its primary activity is %@.\n%ld employees", company.address, company.activity, [company.employees count]];
-                         attributeSet.keywords                      = @[@"company", company.name, company.activity];
+[[WACDSCustomMapping alloc] initWithManagedObjectEntityName:@"Company"
+                                    uniqueIdentifierPattern:@"company_{#name#}"
+                          searchableItemAttributeSetBuilder:^CSSearchableItemAttributeSet *(Company *company) {
+                               CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
+                              attributeSet.title                         = company.name;
+                              attributeSet.contentDescription            = [NSString stringWithFormat:@"The company has its offices in %@ and its primary activity is %@.\n%ld employees", company.address, company.activity, [company.employees count]];
+                              attributeSet.keywords                      = @[@"company", company.name, company.activity];
                          
-                         return attributeSet;
-                     }];
+                              return attributeSet;
+                          }];
 [self.mainIndexer registerMapping:companyMapping];
 
 ```
@@ -149,7 +149,8 @@ self.router = [WAAppRouter defaultRouter];
   presentingController:nav];
 ```
 
-And then
+And then on `application: continueUserActivity: restorationHandler:`
+
 
 ```objc
 NSManagedObject *object = [self.mainIndexer objectFromUserActivity:userActivity];

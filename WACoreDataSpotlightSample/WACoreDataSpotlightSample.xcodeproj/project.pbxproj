@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		79B8D89B2F08B69502FA90A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFFB15285E980B3C0C54BF5C /* libPods.a */; };
-		E007388D1BB5AEA0005657EA /* CompaniesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E007388C1BB5AEA0005657EA /* CompaniesTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E00738901BB5B244005657EA /* BaseFetchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E007388F1BB5B244005657EA /* BaseFetchTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E00738931BB5B2C9005657EA /* EmployeesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00738921BB5B2C9005657EA /* EmployeesTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E00738961BB5B427005657EA /* AppLink.m in Sources */ = {isa = PBXBuildFile; fileRef = E00738951BB5B427005657EA /* AppLink.m */; settings = {ASSET_TAGS = (); }; };
-		E00738991BB5B6F6005657EA /* BaseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00738981BB5B6F6005657EA /* BaseFormViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E007389C1BB5B7A4005657EA /* EmployeeFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E007389B1BB5B7A4005657EA /* EmployeeFormViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E007389F1BB5B8EC005657EA /* EmployeeForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E007389E1BB5B8EC005657EA /* EmployeeForm.m */; settings = {ASSET_TAGS = (); }; };
-		E00738A81BB5DB46005657EA /* lisa-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E00738A71BB5DB46005657EA /* lisa-1.png */; settings = {ASSET_TAGS = (); }; };
-		E00D2E761BB59BDC00F842F6 /* arnaud_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = E00D2E731BB59BDC00F842F6 /* arnaud_avatar.png */; settings = {ASSET_TAGS = (); }; };
-		E00D2E771BB59BDC00F842F6 /* hires_1025456.png in Resources */ = {isa = PBXBuildFile; fileRef = E00D2E741BB59BDC00F842F6 /* hires_1025456.png */; settings = {ASSET_TAGS = (); }; };
-		E00D2E781BB59BDC00F842F6 /* large_1025979.png in Resources */ = {isa = PBXBuildFile; fileRef = E00D2E751BB59BDC00F842F6 /* large_1025979.png */; settings = {ASSET_TAGS = (); }; };
+		E007388D1BB5AEA0005657EA /* CompaniesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E007388C1BB5AEA0005657EA /* CompaniesTableViewController.m */; };
+		E00738901BB5B244005657EA /* BaseFetchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E007388F1BB5B244005657EA /* BaseFetchTableViewController.m */; };
+		E00738931BB5B2C9005657EA /* EmployeesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00738921BB5B2C9005657EA /* EmployeesTableViewController.m */; };
+		E00738961BB5B427005657EA /* AppLink.m in Sources */ = {isa = PBXBuildFile; fileRef = E00738951BB5B427005657EA /* AppLink.m */; };
+		E00738991BB5B6F6005657EA /* BaseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00738981BB5B6F6005657EA /* BaseFormViewController.m */; };
+		E007389C1BB5B7A4005657EA /* EmployeeFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E007389B1BB5B7A4005657EA /* EmployeeFormViewController.m */; };
+		E007389F1BB5B8EC005657EA /* EmployeeForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E007389E1BB5B8EC005657EA /* EmployeeForm.m */; };
+		E00738A81BB5DB46005657EA /* lisa-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E00738A71BB5DB46005657EA /* lisa-1.png */; };
+		E00D2E761BB59BDC00F842F6 /* arnaud_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = E00D2E731BB59BDC00F842F6 /* arnaud_avatar.png */; };
+		E00D2E771BB59BDC00F842F6 /* hires_1025456.png in Resources */ = {isa = PBXBuildFile; fileRef = E00D2E741BB59BDC00F842F6 /* hires_1025456.png */; };
+		E00D2E781BB59BDC00F842F6 /* large_1025979.png in Resources */ = {isa = PBXBuildFile; fileRef = E00D2E751BB59BDC00F842F6 /* large_1025979.png */; };
 		E0BFCB301BB0A717009ED4F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BFCB2F1BB0A717009ED4F0 /* main.m */; };
 		E0BFCB331BB0A717009ED4F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BFCB321BB0A717009ED4F0 /* AppDelegate.m */; };
 		E0BFCB3C1BB0A717009ED4F0 /* WACoreDataSpotlightSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0BFCB3A1BB0A717009ED4F0 /* WACoreDataSpotlightSample.xcdatamodeld */; };
@@ -26,10 +26,10 @@
 		E0BFCB411BB0A717009ED4F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BFCB3F1BB0A717009ED4F0 /* LaunchScreen.storyboard */; };
 		E0BFCB4C1BB0A717009ED4F0 /* WACoreDataSpotlightSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BFCB4B1BB0A717009ED4F0 /* WACoreDataSpotlightSampleTests.m */; };
 		E0BFCB571BB0A717009ED4F0 /* WACoreDataSpotlightSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BFCB561BB0A717009ED4F0 /* WACoreDataSpotlightSampleUITests.m */; };
-		E0F8D08B1BB1FD250049C1FF /* Employee+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D0841BB1FD250049C1FF /* Employee+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		E0F8D08C1BB1FD250049C1FF /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D0861BB1FD250049C1FF /* Employee.m */; settings = {ASSET_TAGS = (); }; };
-		E0F8D08D1BB1FD250049C1FF /* Company+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D0881BB1FD250049C1FF /* Company+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		E0F8D08E1BB1FD250049C1FF /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D08A1BB1FD250049C1FF /* Company.m */; settings = {ASSET_TAGS = (); }; };
+		E0F8D08B1BB1FD250049C1FF /* Employee+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D0841BB1FD250049C1FF /* Employee+CoreDataProperties.m */; };
+		E0F8D08C1BB1FD250049C1FF /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D0861BB1FD250049C1FF /* Employee.m */; };
+		E0F8D08D1BB1FD250049C1FF /* Company+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D0881BB1FD250049C1FF /* Company+CoreDataProperties.m */; };
+		E0F8D08E1BB1FD250049C1FF /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F8D08A1BB1FD250049C1FF /* Company.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +286,7 @@
 				E0BFCB281BB0A717009ED4F0 /* Frameworks */,
 				E0BFCB291BB0A717009ED4F0 /* Resources */,
 				BFF7256B4F621A76EB866467 /* Copy Pods Resources */,
+				B33329806E13F28DFA6B6355 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -418,6 +419,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B33329806E13F28DFA6B6355 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BFF7256B4F621A76EB866467 /* Copy Pods Resources */ = {
