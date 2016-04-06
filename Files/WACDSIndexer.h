@@ -73,6 +73,13 @@ typedef void (^WACDSIndexerBatchCompletionHandler)(NSError * _Nullable error);
 - (void)updateIndexingForObject:(NSManagedObject *_Nonnull)object;
 
 /**
+ *  Remove objects from indexer
+ *
+ *  @param objects the objects to remove from the indexer
+ */
+- (void)removeObjectsFromIndex:(NSArray<NSManagedObject *> *_Nonnull)objects;
+
+/**
  *  Retrieve an NSManagedObject from an identifier you got on application:continueUserActivity:restorationHandler:
  *
  *  @param userActivity the user activity you got from App delegate
