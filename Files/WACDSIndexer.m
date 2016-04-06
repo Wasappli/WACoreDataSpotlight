@@ -171,7 +171,7 @@
     NSMutableArray *objectsWithoutSearchableItem = [NSMutableArray array];
     
     for (id object in objects) {
-        WACDSCustomMapping *mapping = self.mappings[NSStringFromClass([object class])];
+        WACDSCustomMapping *mapping = self.mappings[[[(NSManagedObject *)object entity] name]];
         if (mapping) {
             CSSearchableItem *item = [mapping searchableItemForObject:object];
             if (item) {
@@ -200,7 +200,7 @@
 - (void)removeObjectsFromIndex:(NSArray *)objects {
     NSMutableArray *identifiersToDelete = [NSMutableArray array];
     for (id object in objects) {
-        WACDSCustomMapping *mapping = self.mappings[NSStringFromClass([object class])];
+        WACDSCustomMapping *mapping = self.mappings[[[(NSManagedObject *)object entity] name]];
         if (mapping) {
             [identifiersToDelete addObject:[mapping uniqueIdentifierForObject:object]];
         }
