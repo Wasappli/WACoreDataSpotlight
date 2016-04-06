@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WACoreDataSpotlight"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "Automatically index your CoreData objects to CoreSpotlight on iOS 9"
 
   s.description  = <<-DESC
