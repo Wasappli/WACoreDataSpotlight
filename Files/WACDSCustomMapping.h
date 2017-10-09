@@ -42,10 +42,10 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
  *
  *  @return a fresh mapping
  */
-- (instancetype)initWithManagedObjectEntityName:(NSString *_Nonnull)objectEntityName
-                        uniqueIdentifierPattern:(NSString *_Nonnull)uniqueIdentifierPattern
-              searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder
-                       cleanValuesOnReplacement:(BOOL)cleanValuesOnReplacement;
+- (instancetype _Nonnull)initWithManagedObjectEntityName:(NSString *_Nonnull)objectEntityName
+                                 uniqueIdentifierPattern:(NSString *_Nonnull)uniqueIdentifierPattern
+                       searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder
+                                cleanValuesOnReplacement:(BOOL)cleanValuesOnReplacement;
 
 /**
  *  Get the unique identifier from an object based on the pattern
