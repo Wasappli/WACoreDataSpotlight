@@ -26,6 +26,10 @@
 @implementation WACDSCustomMapping
 
 - (instancetype)initWithManagedObjectEntityName:(NSString *)objectEntityName uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder)searchableItemAttributeSetBuilder {
+    return [self initWithManagedObjectEntityName:objectEntityName uniqueIdentifierPattern:uniqueIdentifierPattern searchableItemAttributeSetBuilder:searchableItemAttributeSetBuilder cleanValuesOnReplacement:NO];
+}
+
+- (instancetype)initWithManagedObjectEntityName:(NSString *)objectEntityName uniqueIdentifierPattern:(NSString *)uniqueIdentifierPattern searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder)searchableItemAttributeSetBuilder cleanValuesOnReplacement:(BOOL)cleanValuesOnReplacement {
     
     WACDSClassAssertion(objectEntityName, NSString);
     WACDSClassAssertion(uniqueIdentifierPattern, NSString);
@@ -37,7 +41,7 @@
         self->_searchableItemAttributeSetBuilder = searchableItemAttributeSetBuilder;
         
         // Create the pattern
-        self->_uniqueIdentifierStringPattern = [[WACDSStringPattern alloc] initWithPattern:uniqueIdentifierPattern cleanValuesOnReplacement:NO];
+        self->_uniqueIdentifierStringPattern = [[WACDSStringPattern alloc] initWithPattern:uniqueIdentifierPattern cleanValuesOnReplacement:cleanValuesOnReplacement];
     }
     
     return self;

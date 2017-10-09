@@ -33,6 +33,21 @@ typedef NSDate* _Nonnull (^WACDSMappingExpirationDateBuilder)(id _Nonnull object
                        searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder;
 
 /**
+ *  Init the mapping
+ *
+ *  @param objectEntityName                  The object entity name
+ *  @param uniqueIdentifierPattern           A pattern for unique identifier. Ex: booking_{#bookingID#}
+ *  @param searchableItemAttributeSetBuilder A block which will be called for each object to index. You need to return an attribute set
+ *  @param cleanValuesOnReplacement          A bool which is used to change the default behaviour. By default is NO.
+ *
+ *  @return a fresh mapping
+ */
+- (instancetype _Nonnull)initWithManagedObjectEntityName:(NSString *_Nonnull)objectEntityName
+                                 uniqueIdentifierPattern:(NSString *_Nonnull)uniqueIdentifierPattern
+                       searchableItemAttributeSetBuilder:(WACDSSearchableItemAttributeSetBuilder _Nonnull)searchableItemAttributeSetBuilder
+                                cleanValuesOnReplacement:(BOOL)cleanValuesOnReplacement;
+
+/**
  *  Get the unique identifier from an object based on the pattern
  *
  *  @param object the object you want to index
